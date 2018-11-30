@@ -1,0 +1,3 @@
+add_unit_measure:
+    path:      /unitMeasure/add
+    controller: AppBundle\Controller\UnitMeasureController::add
