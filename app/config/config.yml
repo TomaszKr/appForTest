@@ -69,3 +69,10 @@ swiftmailer:
 sensio_framework_extra:
    router:
         annotations: false
+
+doctrine_migrations:
+    dir_name: "%kernel.root_dir%/Migrations"
+    namespace: Application\Migrations
+    table_name: migration_versions
+    name: Application Migrations
+#    organize_migrations: year_and_month # Version >=1.2 Possible values are: "BY_YEAR", "BY_YEAR_AND_MONTH", false
