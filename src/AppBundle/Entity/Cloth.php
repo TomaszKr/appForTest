@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Cloth
+ * Klasa Materiał
  *
  * @ORM\Table(name="cloth")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ClothRepository")

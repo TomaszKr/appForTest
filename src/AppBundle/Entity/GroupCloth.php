@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * GroupCloth
+ * Klasa grupa materiałów
  *
  * @ORM\Table(name="group_cloth")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\GroupClothRepository")

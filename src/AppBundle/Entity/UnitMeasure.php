@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * UnitMeasure
+ * Klasa jednostka miary
  *
  * @ORM\Table(name="unit_measure")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UnitMeasureRepository")
