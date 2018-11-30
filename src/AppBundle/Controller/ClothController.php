@@ -5,7 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class UnitMeasureController extends Controller
+class ClothController extends Controller
 {
     public function add(Request $request)
     {

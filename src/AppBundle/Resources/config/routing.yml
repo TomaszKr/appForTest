@@ -1,3 +1,41 @@
 add_unit_measure:
-    path:      /unitMeasure/add
+    path:      /unitMeasure
     controller: AppBundle\Controller\UnitMeasureController::add
+    methods:
+        - PUT
+    
+edit_unit_measure:
+    path:      /unitMeasure
+    controller: AppBundle\Controller\UnitMeasureController::edit  
+    methods:
+        - POST
+        
+add_cloth:
+    path:      /cloth
+    controller: AppBundle\Controller\ClothController::add
+    methods:
+        - PUT
+    
+edit_cloth:
+    path:      /cloth
+    controller: AppBundle\Controller\ClothController::edit  
+    methods:
+        - POST
+          
+add_group_cloth:
+    path:      /groupCloth
+    controller: AppBundle\Controller\GroupClothController::add
+    methods:
+        - PUT
+    
+edit_group_cloth:
+    path:      /groupCloth
+    controller: AppBundle\Controller\GroupClothController::edit  
+    methods:
+        - POST      
+        
+tree_group_cloth:
+    path:      /groupCloth
+    controller: AppBundle\Controller\GroupClothController::tree  
+    methods:
+        - GET            
