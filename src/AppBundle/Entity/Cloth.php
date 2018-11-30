@@ -3,12 +3,20 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Klasa Materiał
  *
  * @ORM\Table(name="cloth")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ClothRepository")
+ * 
+ * @UniqueEntity(
+ *     fields={"code"},
+ *     errorPath="code",
+ *     message="This code is already in use."
+ * ) 
  */
 class Cloth
 {
@@ -23,7 +31,9 @@ class Cloth
 
     /**
      * @var string
-     *
+     * 
+     * @Assert\NotBlank
+     * 
      * @ORM\Column(name="code", type="string", length=255, unique=true)
      */
     private $code;
@@ -31,13 +41,17 @@ class Cloth
     /**
      * @var string
      *
+     * @Assert\NotBlank
+     * 
      * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 
     /**
      * @var UnitMeasure
-     *
+     * 
+     * @Assert\NotBlank
+     * 
      * @ORM\ManyToOne(targetEntity="UnitMeasure")
      * @ORM\JoinColumn(name="unit_of_measure_id", referencedColumnName="id", nullable=false)
      */
@@ -46,6 +60,8 @@ class Cloth
     /**
      * @var GroupCloth
      *
+     * @Assert\NotBlank 
+     * 
      * @ORM\ManyToOne(targetEntity="GroupCloth", inversedBy="cloths")
      * @ORM\JoinColumn(name="group_cloth_id", referencedColumnName="id")
      */

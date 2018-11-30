@@ -3,12 +3,20 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Klasa jednostka miary
- *
+ * 
  * @ORM\Table(name="unit_measure")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UnitMeasureRepository")
+ * 
+ * @UniqueEntity(
+ *     fields={"name"},
+ *     errorPath="name",
+ *     message="This name is already in use."
+ * ) 
  */
 class UnitMeasure
 {
@@ -23,6 +31,8 @@ class UnitMeasure
 
     /**
      * @var string
+     * 
+     * @Assert\NotBlank 
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
@@ -30,7 +40,9 @@ class UnitMeasure
 
     /**
      * @var string
-     *
+     * 
+     * @Assert\NotBlank 
+     * 
      * @ORM\Column(name="shortName", type="string", length=255, unique=true)
      */
     private $shortName;

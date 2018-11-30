@@ -4,12 +4,21 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * Klasa grupa materiałów
- *
+ * 
  * @ORM\Table(name="group_cloth")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\GroupClothRepository")
+ *
+ * @UniqueEntity(
+ *     fields={"name"},
+ *     errorPath="name",
+ *     message="This name is already in use."
+ * ) 
  */
 class GroupCloth
 {
@@ -24,6 +33,8 @@ class GroupCloth
 
     /**
      * @var string
+     * 
+     * @Assert\NotBlank  
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
