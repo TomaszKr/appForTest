@@ -26,6 +26,7 @@ class UnitMeasureType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => UnitMeasure::class,
+            'csrf_protection' => false,
         ));
     }
 }

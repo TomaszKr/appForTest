@@ -1,11 +1,13 @@
 <?php
 
-use AppBundle\Entity\Cloth;
-use AppBundle\Entity\GroupCloth;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Test\FormBuilderInterface;
-
 namespace AppBundle\Form;
+
+use AppBundle\Entity\GroupCloth;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Formularz dla grupy materiałów
@@ -33,7 +35,8 @@ class GroupClothType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Cloth::class,
+            'data_class' => GroupCloth::class,
+            'csrf_protection' => false,
         ));
     }
 }

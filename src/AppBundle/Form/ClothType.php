@@ -45,6 +45,7 @@ class ClothType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => Cloth::class,
+            'csrf_protection' => false,
         ));
     }
 }
