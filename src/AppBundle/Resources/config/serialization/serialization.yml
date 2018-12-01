@@ -1,0 +1,46 @@
+AppBundle\Entity\GroupCloth:
+    attributes:
+        id:
+            groups: 
+                - tree
+                - cloth
+                - groupCloth
+        name:
+            groups: 
+                - tree
+                - cloth
+                - groupCloth
+        children:
+            groups: 
+                - tree
+        parent:
+            groups: 
+                - groupCloth
+            
+AppBundle\Entity\Cloth:
+    attributes:
+        id:
+            groups: ['cloth']
+        name:
+            groups: ['cloth']
+        code:
+            groups: ['cloth']
+        unitOfMeasure:
+            groups: ['cloth']
+        groupCloth:
+            groups: ['cloth']
+            
+AppBundle\Entity\UnitMeasure:
+    attributes:
+        id:
+            groups: 
+                - cloth
+                - unitMeasure
+        name:
+            groups: 
+                - cloth
+                - unitMeasure
+        shortName:
+            groups: 
+                - cloth
+                - unitMeasure

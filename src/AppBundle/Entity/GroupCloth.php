@@ -126,5 +126,29 @@ class GroupCloth
     {
         return $this->parent;
     }
+    
+    /**
+     * Set parent
+     *
+     * @param GroupCloth $children
+     *
+     * @return GroupCloth
+     */
+    public function setChildren($children)
+    {
+        $this->children = $children;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return GroupCloth
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
 }
 

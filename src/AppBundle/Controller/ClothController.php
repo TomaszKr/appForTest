@@ -12,6 +12,7 @@ class ClothController extends BaseController
     {
         $this->object = new Cloth();
         $this->formType = ClothType::class;
+        $this->groupForSerializer = [\AppBundle\Dictionary\SerializerType::CLOTH];
     }
     
 }

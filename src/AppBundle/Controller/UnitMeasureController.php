@@ -12,6 +12,7 @@ class UnitMeasureController extends BaseController
     {
         $this->object = new UnitMeasure();
         $this->formType = UnitMeasureType::class;
+        $this->groupForSerializer = [\AppBundle\Dictionary\SerializerType::UNIT_MEASURE];
     }
     
 }
