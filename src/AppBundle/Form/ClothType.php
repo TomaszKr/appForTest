@@ -5,8 +5,11 @@ namespace AppBundle\Form;
 use AppBundle\Entity\Cloth;
 use AppBundle\Entity\GroupCloth;
 use AppBundle\Entity\UnitMeasure;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Test\FormBuilderInterface;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Formularz dla materiałów
