@@ -2,21 +2,19 @@
 
 namespace AppBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AppBundle\Entity\GroupCloth;
+use AppBundle\Form\GroupClothType;
 use Symfony\Component\HttpFoundation\Request;
 
-class GroupClothController extends Controller
+class GroupClothController extends BaseController
 {
-    public function add(Request $request)
+    public function __construct()
     {
-       //TODO
+        parent::__construct();
+        $this->object = new GroupCloth();
+        $this->formType = GroupClothType::class;
     }
-    
-    public function edit(Request $request)
-    {
-        //TODO
-    }
-    
+
     public function tree(Request $request)
     {
         //TODO

@@ -2,18 +2,16 @@
 
 namespace AppBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Cloth;
+use AppBundle\Form\ClothType;
 
-class ClothController extends Controller
+
+class ClothController extends BaseController
 {
-    public function add(Request $request)
+    public function __construct()
     {
-       //TODO
+        $this->object = new Cloth();
+        $this->formType = ClothType::class;
     }
     
-    public function edit(Request $request)
-    {
-        //TODO
-    }
 }
