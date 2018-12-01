@@ -13,9 +13,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UnitMeasureRepository")
  * 
  * @UniqueEntity(
- *     fields={"name"},
+ *     fields="name",
  *     errorPath="name",
  *     message="This name is already in use."
+ * )
+ * @UniqueEntity(
+ *     fields="shortName",
+ *     errorPath="shortName",
+ *     message="This shortName is already in use." 
  * ) 
  */
 class UnitMeasure
