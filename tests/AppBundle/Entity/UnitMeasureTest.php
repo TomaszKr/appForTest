@@ -31,10 +31,5 @@ class ClothTest extends TestCase
         $this->assertInstanceOf(Cloth::class,$cloth->setName($name));
         $this->assertInstanceOf(Cloth::class,$cloth->setGroupCloth($groupCloth));
         $this->assertInstanceOf(Cloth::class,$cloth->setUnitOfMeasure($unitOfMeasure));
-        
-        $this->assertEquals($code, $cloth->getCode());
-        $this->assertEquals($name,$cloth->getName());
-        $this->assertEquals($groupCloth,$cloth->getGroupCloth());
-        $this->assertEquals($unitOfMeasure,$cloth->getUnitOfMeasure());
     }
 }
