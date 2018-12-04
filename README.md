@@ -64,18 +64,23 @@ Następna komenta, wgranie stworzonych zapytań SQL do bazy:
 ```bash
 php bin/console doctrine:migrations:migrate
 ```
+-----
 
 ## Testy
 ```bash
 vendor/bin/simple-phpunit
 ```
 
+-----
 
 ### Endpointy
+
+-----
 
 #### Dodawanie jednostki miary
 
 Methoda: PUT
+
 URL: /unitMeasure
 
 **Request:**
@@ -99,9 +104,12 @@ shortName=>{Nazwa skrócona}
 {"action":"created","data":{"id":269,"name":"test333","shortName":"test633"}}
 ```
 
+-----
+
 #### Edycja jednostki miary
 
 Methoda: POST
+
 URL: /unitMeasure
 
 **Request:**
@@ -126,10 +134,12 @@ shortName=>{Nazwa skrócona}
 {"action":"update","data":{"id":269,"name":"test333","shortName":"test633"}}
 ```
 
+-----
 
 #### Dodawanie grup materiałów
 
 Methoda: PUT
+
 URL: /groupCloth
 
 **Request:**
@@ -160,6 +170,8 @@ name=>{Nazwa grupy materałów}
 ```php
 {"action":"created","data":{"id":137,"name":"GrupaMaterialu","parent":null}}
 ```
+
+-----
 
 #### Edycja grup materiałów
 
@@ -197,6 +209,8 @@ name=>{Nazwa grupy materałów}
 {"action":"update","data":{"id":137,"name":"GrupaMaterialu","parent":null}}
 ```
 
+-----
+
 #### Drzewo grup materiałów
 
 Methoda: GET
@@ -210,6 +224,8 @@ get - pokazuje grupe bez lisci
 ```php
 {"action":"tree","data":{"id":1,"name":"test4","children":[{"id":2,"name":"test2"}]}}
 ```
+
+-----
 
 #### Dodawanie materiałów
 
@@ -238,6 +254,8 @@ groupCloth:{grupa materialu}
 ```php
 {"action":"created","data":{"id":5,"name":"test42121","code":"1235431","unitOfMeasure":{"id":1,"name":"test2","shortName":"test"},"groupCloth":{"id":1,"name":"test4"}}}
 ```
+
+-----
 
 #### Edycja materiałów
 
