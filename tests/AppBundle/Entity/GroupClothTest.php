@@ -6,9 +6,7 @@
  */
 namespace AppBundle\Entity\Testy;
 
-use AppBundle\Entity\Cloth;
 use AppBundle\Entity\GroupCloth;
-use AppBundle\Entity\UnitMeasure;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
 /**
@@ -16,20 +14,22 @@ use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
  *
  * @author tomasz
  */
-class ClothTest extends TestCase
+class GroupClothTest extends TestCase
 {
     public function testObject()
     {
-        $code = 'SK';
         $name = 'Nazwa';
+        $children = new GroupCloth();
+        $parent= new GroupCloth();
+        
         $groupCloth = new GroupCloth();
-        $unitOfMeasure= new UnitMeasure();
         
-        $cloth = new Cloth();
+        $this->assertInstanceOf(GroupCloth::class,$groupCloth->setName($name));
+        $this->assertInstanceOf(GroupCloth::class,$groupCloth->setChildren($children));
+        $this->assertInstanceOf(GroupCloth::class,$groupCloth->setParent($parent));
         
-        $this->assertInstanceOf(Cloth::class,$cloth->setCode($code));
-        $this->assertInstanceOf(Cloth::class,$cloth->setName($name));
-        $this->assertInstanceOf(Cloth::class,$cloth->setGroupCloth($groupCloth));
-        $this->assertInstanceOf(Cloth::class,$cloth->setUnitOfMeasure($unitOfMeasure));
+        $this->assertEquals($name, $groupCloth->getName());
+        $this->assertEquals($children, $groupCloth->getChildren());
+        $this->assertEquals($parent, $groupCloth->getParent());
     }
 }

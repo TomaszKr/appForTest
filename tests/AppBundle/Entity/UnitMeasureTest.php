@@ -6,8 +6,6 @@
  */
 namespace AppBundle\Entity\Testy;
 
-use AppBundle\Entity\Cloth;
-use AppBundle\Entity\GroupCloth;
 use AppBundle\Entity\UnitMeasure;
 use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
@@ -16,20 +14,20 @@ use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
  *
  * @author tomasz
  */
-class ClothTest extends TestCase
+class UnitMeasureTest extends TestCase
 {
     public function testObject()
     {
         $code = 'SK';
         $name = 'Nazwa';
-        $groupCloth = new GroupCloth();
+        
         $unitOfMeasure= new UnitMeasure();
         
-        $cloth = new Cloth();
+        $this->assertInstanceOf(UnitMeasure::class,$unitOfMeasure->setShortName($code));
+        $this->assertInstanceOf(UnitMeasure::class,$unitOfMeasure->setName($name));
         
-        $this->assertInstanceOf(Cloth::class,$cloth->setCode($code));
-        $this->assertInstanceOf(Cloth::class,$cloth->setName($name));
-        $this->assertInstanceOf(Cloth::class,$cloth->setGroupCloth($groupCloth));
-        $this->assertInstanceOf(Cloth::class,$cloth->setUnitOfMeasure($unitOfMeasure));
+        $this->assertEquals(null, $unitOfMeasure->getId());
+        $this->assertEquals($code, $unitOfMeasure->getShortName());
+        $this->assertEquals($name,$unitOfMeasure->getName());
     }
 }
