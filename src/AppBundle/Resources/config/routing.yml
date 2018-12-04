@@ -35,7 +35,7 @@ edit_group_cloth:
         - POST      
         
 tree_group_cloth:
-    path:      /groupCloth/{id}/tree
+    path:      /groupCloth/{id}/tree/{type}
     controller: AppBundle\Controller\GroupClothController::tree  
     methods:
         - GET            

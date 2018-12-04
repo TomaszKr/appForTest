@@ -93,6 +93,6 @@ class BaseController extends Controller
         $classMetadataFactory = new ClassMetadataFactory(new YamlFileLoader(__DIR__.'/../Resources/config/serialization/serialization.yml'));
         $normalizer = new ObjectNormalizer($classMetadataFactory);
         $serializer = new Serializer(array($normalizer));
-        return $serializer->normalize($object, null, array('groups' => $groups));
+        return $serializer->normalize($object, null, array('groups' => $groups,'skip_null_values' => true,'enable_max_depth' => true));
     }
 }

@@ -11,6 +11,7 @@ AppBundle\Entity\GroupCloth:
                 - cloth
                 - groupCloth
         children:
+            max_depth: 1
             groups: 
                 - tree
         parent:

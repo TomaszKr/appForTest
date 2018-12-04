@@ -18,7 +18,7 @@ class GroupClothController extends BaseController
         $this->groupForSerializer = [\AppBundle\Dictionary\SerializerType::GROUP_CLOTH];
     }
 
-    public function tree(Request $request, $id)
+    public function tree(Request $request, $id, $type)
     {
         $groupCloth = $this->getDoctrine()->getRepository(get_class($this->object))->find($id);
         
@@ -26,9 +26,24 @@ class GroupClothController extends BaseController
             return new JsonResponse(array('error'=>'Not found object'),Response::HTTP_NOT_ACCEPTABLE);
         }
         
-        $json = $this->serialize($groupCloth, [\AppBundle\Dictionary\SerializerType::TREE]);
+        $json = $this->serialize($groupCloth, [$this->typeStrategy($type)]);
         
         return new JsonResponse(array('action'=>'tree','data'=>$json),Response::HTTP_NOT_ACCEPTABLE);
     }
     
+    
+    private function typeStrategy($type)
+    {
+        switch($type)
+        {
+            case 'show':
+                return \AppBundle\Dictionary\SerializerType::TREE;
+            break;
+            case 'get':
+                return \AppBundle\Dictionary\SerializerType::GROUP_CLOTH;
+            break;
+            default:
+                return new JsonResponse(array('error'=>'Not found object'),Response::HTTP_NOT_ACCEPTABLE);
+        }
+    }
 }
