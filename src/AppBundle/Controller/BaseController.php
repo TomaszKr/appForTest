@@ -80,7 +80,7 @@ class BaseController extends Controller
             
             $json = $this->serialize($object, $this->groupForSerializer);
 
-            return new JsonResponse(array('action'=>'update','data'=>$json),Response::HTTP_CREATED);
+            return new JsonResponse(array('action'=>'update','data'=>$json),Response::HTTP_OK);
         }
         
         $errors = new ErrorForms();

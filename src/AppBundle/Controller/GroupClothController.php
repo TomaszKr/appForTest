@@ -28,7 +28,7 @@ class GroupClothController extends BaseController
         
         $json = $this->serialize($groupCloth, [$this->typeStrategy($type)]);
         
-        return new JsonResponse(array('action'=>'tree','data'=>$json),Response::HTTP_NOT_ACCEPTABLE);
+        return new JsonResponse(array('action'=>'tree','data'=>$json),Response::HTTP_OK);
     }
     
     
