@@ -6,6 +6,8 @@
 
 Instalacja aplikacji.
 
+Dla wersji Apache.
+
 W pierwszej kolejności należy wykonać komende w consoli linii komend (CLI):
 
 ```bash
@@ -61,4 +63,9 @@ Następna komenta, wgranie stworzonych zapytań SQL do bazy:
 
 ```bash
 php bin/console doctrine:migrations:migrate
+```
+
+## Testy
+```bash
+vendor/bin/simple-phpunit
 ```
