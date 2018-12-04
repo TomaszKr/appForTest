@@ -245,7 +245,7 @@ Body:
 name=>{nazwa materiału},
 code=>{kod materiału},
 unitOfMeasure=>{jednostka materialu},
-groupCloth:{grupa materialu}
+groupCloth=>{grupa materialu}
 ]
 ```
 
@@ -275,7 +275,7 @@ Body:
 name=>{nazwa materiału},
 code=>{kod materiału},
 unitOfMeasure=>{jednostka materialu},
-groupCloth:{grupa materialu}
+groupCloth=>{grupa materialu}
 ]
 ```
 
