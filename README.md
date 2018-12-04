@@ -93,14 +93,14 @@ Content-Type: application/x-www-form-urlencoded
 Body:
 ```php
 [
-name=>{Nazwa jednostki materałów}
+name=>{Nazwa jednostki materałów},
 shortName=>{Nazwa skrócona}
 ]
 ```
 
 **Response:**
 
-```php
+```json
 {"action":"created","data":{"id":269,"name":"test333","shortName":"test633"}}
 ```
 
@@ -122,15 +122,15 @@ Content-Type: application/x-www-form-urlencoded
 Body:
 ```php
 [
-id=>{Id elementu ktory chcemy edytowac}
-name=>{Nazwa jednostki materałów}
+id=>{Id elementu ktory chcemy edytowac},
+name=>{Nazwa jednostki materałów},
 shortName=>{Nazwa skrócona}
 ]
 ```
 
 **Response:**
 
-```php
+```json
 {"action":"update","data":{"id":269,"name":"test333","shortName":"test633"}}
 ```
 
@@ -152,7 +152,7 @@ Content-Type: application/x-www-form-urlencoded
 Body:
 ```php
 [
-name=>{Nazwa grupy materałów}
+name=>{Nazwa grupy materałów},
 parent=>{id grupy materiałów}
 ]
 ```
@@ -167,7 +167,7 @@ name=>{Nazwa grupy materałów}
 
 **Response:**
 
-```php
+```json
 {"action":"created","data":{"id":137,"name":"GrupaMaterialu","parent":null}}
 ```
 
@@ -188,8 +188,8 @@ Content-Type: application/x-www-form-urlencoded
 Body:
 ```php
 [
-id=>{Id elementu ktory chcemy edytowac}
-name=>{Nazwa grupy materałów}
+id=>{Id elementu ktory chcemy edytowac},
+name=>{Nazwa grupy materałów},
 parent=>{id grupy materiałów}
 ]
 ```
@@ -198,14 +198,14 @@ lub
 
 ```php
 [
-id=>{Id elementu ktory chcemy edytowac}
+id=>{Id elementu ktory chcemy edytowac},
 name=>{Nazwa grupy materałów}
 ]
 ```
 
 **Response:**
 
-```php
+```json
 {"action":"update","data":{"id":137,"name":"GrupaMaterialu","parent":null}}
 ```
 
@@ -221,7 +221,7 @@ get - pokazuje grupe bez lisci
 
 **Response:**
 
-```php
+```json
 {"action":"tree","data":{"id":1,"name":"test4","children":[{"id":2,"name":"test2"}]}}
 ```
 
@@ -242,16 +242,16 @@ Content-Type: application/x-www-form-urlencoded
 Body:
 ```php
 [
-name=>{nazwa materiału}
-code=>{kod materiału}
-unitOfMeasure=>{jednostka materialu}
+name=>{nazwa materiału},
+code=>{kod materiału},
+unitOfMeasure=>{jednostka materialu},
 groupCloth:{grupa materialu}
 ]
 ```
 
 **Response:**
 
-```php
+```json
 {"action":"created","data":{"id":5,"name":"test42121","code":"1235431","unitOfMeasure":{"id":1,"name":"test2","shortName":"test"},"groupCloth":{"id":1,"name":"test4"}}}
 ```
 
@@ -272,15 +272,15 @@ Content-Type: application/x-www-form-urlencoded
 Body:
 ```php
 [
-name=>{nazwa materiału}
-code=>{kod materiału}
-unitOfMeasure=>{jednostka materialu}
+name=>{nazwa materiału},
+code=>{kod materiału},
+unitOfMeasure=>{jednostka materialu},
 groupCloth:{grupa materialu}
 ]
 ```
 
 **Response:**
 
-```php
+```json
 {"action":"update","data":{"id":5,"name":"test42121","code":"1235431","unitOfMeasure":{"id":1,"name":"test2","shortName":"test"},"groupCloth":{"id":1,"name":"test4"}}}
 ```
