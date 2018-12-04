@@ -69,3 +69,200 @@ php bin/console doctrine:migrations:migrate
 ```bash
 vendor/bin/simple-phpunit
 ```
+
+
+### Endpointy
+
+#### Dodawanie jednostki miary
+
+Methoda: PUT
+URL: /unitMeasure
+
+**Request:**
+
+Head:
+```php
+Content-Type: application/x-www-form-urlencoded
+```
+
+Body:
+```php
+[
+name=>{Nazwa jednostki materałów}
+shortName=>{Nazwa skrócona}
+]
+```
+
+**Response:**
+
+```php
+{"action":"created","data":{"id":269,"name":"test333","shortName":"test633"}}
+```
+
+#### Edycja jednostki miary
+
+Methoda: POST
+URL: /unitMeasure
+
+**Request:**
+
+Head:
+```php
+Content-Type: application/x-www-form-urlencoded
+```
+
+Body:
+```php
+[
+id=>{Id elementu ktory chcemy edytowac}
+name=>{Nazwa jednostki materałów}
+shortName=>{Nazwa skrócona}
+]
+```
+
+**Response:**
+
+```php
+{"action":"update","data":{"id":269,"name":"test333","shortName":"test633"}}
+```
+
+
+#### Dodawanie grup materiałów
+
+Methoda: PUT
+URL: /groupCloth
+
+**Request:**
+
+Head:
+```php
+Content-Type: application/x-www-form-urlencoded
+```
+
+Body:
+```php
+[
+name=>{Nazwa grupy materałów}
+parent=>{id grupy materiałów}
+]
+```
+
+lub
+
+```php
+[
+name=>{Nazwa grupy materałów}
+]
+```
+
+**Response:**
+
+```php
+{"action":"created","data":{"id":137,"name":"GrupaMaterialu","parent":null}}
+```
+
+#### Edycja grup materiałów
+
+Methoda: POST
+URL: /groupCloth
+
+**Request:**
+
+Head:
+```php
+Content-Type: application/x-www-form-urlencoded
+```
+
+Body:
+```php
+[
+id=>{Id elementu ktory chcemy edytowac}
+name=>{Nazwa grupy materałów}
+parent=>{id grupy materiałów}
+]
+```
+
+lub
+
+```php
+[
+id=>{Id elementu ktory chcemy edytowac}
+name=>{Nazwa grupy materałów}
+]
+```
+
+**Response:**
+
+```php
+{"action":"update","data":{"id":137,"name":"GrupaMaterialu","parent":null}}
+```
+
+#### Drzewo grup materiałów
+
+Methoda: GET
+URL: /groupCloth/{id}/tree/{[show] lub [get]}
+
+show - pokazuje liscie
+get - pokazuje grupe bez lisci
+
+**Response:**
+
+```php
+{"action":"tree","data":{"id":1,"name":"test4","children":[{"id":2,"name":"test2"}]}}
+```
+
+#### Dodawanie materiałów
+
+Methoda: PUT
+URL: /cloth
+
+**Request:**
+
+Head:
+```php
+Content-Type: application/x-www-form-urlencoded
+```
+
+Body:
+```php
+[
+name=>{nazwa materiału}
+code=>{kod materiału}
+unitOfMeasure=>{jednostka materialu}
+groupCloth:{grupa materialu}
+]
+```
+
+**Response:**
+
+```php
+{"action":"created","data":{"id":5,"name":"test42121","code":"1235431","unitOfMeasure":{"id":1,"name":"test2","shortName":"test"},"groupCloth":{"id":1,"name":"test4"}}}
+```
+
+#### Edycja materiałów
+
+Methoda: POST
+URL: /cloth
+
+**Request:**
+
+Head:
+```php
+Content-Type: application/x-www-form-urlencoded
+```
+
+Body:
+```php
+[
+name=>{nazwa materiału}
+code=>{kod materiału}
+unitOfMeasure=>{jednostka materialu}
+groupCloth:{grupa materialu}
+]
+```
+
+**Response:**
+
+```php
+{"action":"update","data":{"id":5,"name":"test42121","code":"1235431","unitOfMeasure":{"id":1,"name":"test2","shortName":"test"},"groupCloth":{"id":1,"name":"test4"}}}
+```
