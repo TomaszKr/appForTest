@@ -1,5 +1,4 @@
 <?php
-
 namespace AppBundle\Repository;
 
 /**
@@ -10,4 +9,5 @@ namespace AppBundle\Repository;
  */
 class ClothRepository extends \Doctrine\ORM\EntityRepository
 {
+    
 }

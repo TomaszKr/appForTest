@@ -1,5 +1,4 @@
 <?php
-
 namespace Tests\AppBundle\Controller;
 
 use Doctrine\ORM\EntityManager;
@@ -9,15 +8,16 @@ use Symfony\Component\HttpKernel\Client;
 
 class GroupClothControllerTest extends WebTestCase
 {
+
     /** @var  Client $client */
     protected $client;
-    
+
     /** @var  ContainerInterface $container */
     protected $container;
 
     /** @var  EntityManager $entityManager */
     protected $entityManager;
-    
+
     /**
      * {@inheritDoc}
      */
@@ -29,11 +29,11 @@ class GroupClothControllerTest extends WebTestCase
 
         parent::setUp();
     }
-    
+
     protected function tearDown()
     {
         parent::tearDown();
-        
+
         $this->entityManager->close();
         $this->entityManager = null;
     }
@@ -43,101 +43,95 @@ class GroupClothControllerTest extends WebTestCase
      */
     public function testAdd($name, $parents)
     {
-        $parent = $this->entityManager->getRepository(\AppBundle\Entity\GroupCloth::class)->findOneBy(['name'=>$parents]);
-        
-        if($parent){
+        $parent = $this->entityManager->getRepository(\AppBundle\Entity\GroupCloth::class)->findOneBy(['name' => $parents]);
+
+        if ($parent) {
             $data = array(
                 'name' => $name,
                 'parent' => $parent->getId()
             );
-        }else{
+        } else {
             $data = array(
                 'name' => $name
             );
         }
-        
+
         $crawler = $this->client->request(
-            'PUT', 
-            '/groupCloth',
-            $data
+            'PUT', '/groupCloth', $data
         );
-        
+
         $json = $this->client->getResponse()->getContent();
 
         $this->assertEquals(201, $this->client->getResponse()->getStatusCode());
         $this->assertJson($json);
-        
-        $object = json_decode($json,true);
-        
+
+        $object = json_decode($json, true);
+
         $this->assertEquals('created', $object['action']);
     }
-    
+
     /**
      * @dataProvider elementsEditChangeParent
      */
     public function testEditChangeParent($name, $parent)
     {
-        $groupCloth = $this->entityManager->getRepository(\AppBundle\Entity\GroupCloth::class)->findOneBy(['name'=>$name]);
-        
-        $parents = $this->entityManager->getRepository(\AppBundle\Entity\GroupCloth::class)->findOneBy(['name'=>$parent]);
-        
-        if($parents){
+        $groupCloth = $this->entityManager->getRepository(\AppBundle\Entity\GroupCloth::class)->findOneBy(['name' => $name]);
+
+        $parents = $this->entityManager->getRepository(\AppBundle\Entity\GroupCloth::class)->findOneBy(['name' => $parent]);
+
+        if ($parents) {
             $data = array(
-                'id'=>$groupCloth->getId(),
+                'id' => $groupCloth->getId(),
                 'name' => $name,
                 'parent' => $parents->getId()
             );
-        }else{
+        } else {
             $data = array(
-                'id'=>$groupCloth->getId(),
+                'id' => $groupCloth->getId(),
                 'name' => $name
             );
         }
 
         $crawler = $this->client->request(
-            'POST', 
-            '/groupCloth',
-            $data
+            'POST', '/groupCloth', $data
         );
-        
+
         $json = $this->client->getResponse()->getContent();
 
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
-        
+
         $this->assertJson($json);
-        
-        $object = json_decode($json,true);
-        
+
+        $object = json_decode($json, true);
+
         $this->assertEquals('update', $object['action']);
 
-        
-        $this->assertEquals($parents,$groupCloth->getParent());
+
+        $this->assertEquals($parents, $groupCloth->getParent());
     }
-    
 
     public function testTree()
     {
-        $groupCloth = $this->entityManager->getRepository(\AppBundle\Entity\GroupCloth::class)->findOneBy(['name'=>'GrupaMaterialu1']);
+        $groupCloth = $this->entityManager->getRepository(\AppBundle\Entity\GroupCloth::class)->findOneBy(['name' => 'GrupaMaterialu1']);
 
         $crawler = $this->client->request(
-            'GET', 
-            "/groupCloth/{$groupCloth->getId()}/tree/get"
+            'GET', "/groupCloth/{$groupCloth->getId()}/tree/get"
         );
-        
+
         $json = $this->client->getResponse()->getContent();
 
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
-        
+
         $this->assertJson($json);
-        
-        $object = json_decode($json,true);
-        
+
+        $object = json_decode($json, true);
+
         $this->assertEquals('tree', $object['action']);
 
-        
+
         return $object['data'];
     }
-    
+
     /**
      * @depends testTree
      */
@@ -146,67 +140,66 @@ class GroupClothControllerTest extends WebTestCase
         $groupCloth = $this->entityManager->getRepository(\AppBundle\Entity\GroupCloth::class)->find($object['id']);
 
         $crawler = $this->client->request(
-            'GET', 
-            "/groupCloth/{$object['id']}/tree/show"
+            'GET', "/groupCloth/{$object['id']}/tree/show"
         );
-        
+
         $json = $this->client->getResponse()->getContent();
 
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
-        
+
         $this->assertJson($json);
-        
-        $newObject = json_decode($json,true);
-        
+
+        $newObject = json_decode($json, true);
+
         $this->assertEquals('tree', $newObject['action']);
-        
+
         $this->assertEquals($newObject['data']['id'], $groupCloth->getId());
     }
-    
+
     public function elements()
     {
         return [
-          ['name'=>'GrupaMaterialu1', 'parent' => null],  
-          ['name'=>'GrupaMaterialu2', 'parent' => 'GrupaMaterialu1'],  
-          ['name'=>'GrupaMaterialu3', 'parent' => 'GrupaMaterialu2'],  
-          ['name'=>'GrupaMaterialu4', 'parent' => 'GrupaMaterialu3'],  
+            ['name' => 'GrupaMaterialu1', 'parent' => null],
+            ['name' => 'GrupaMaterialu2', 'parent' => 'GrupaMaterialu1'],
+            ['name' => 'GrupaMaterialu3', 'parent' => 'GrupaMaterialu2'],
+            ['name' => 'GrupaMaterialu4', 'parent' => 'GrupaMaterialu3'],
         ];
     }
-    
+
     public function elementsEditChangeParent()
     {
-        return [ 
-          ['name'=>'GrupaMaterialu3', 'parent' => 'GrupaMaterialu1'],  
-          ['name'=>'GrupaMaterialu2', 'parent' => 'GrupaMaterialu4'],  
+        return [
+            ['name' => 'GrupaMaterialu3', 'parent' => 'GrupaMaterialu1'],
+            ['name' => 'GrupaMaterialu2', 'parent' => 'GrupaMaterialu4'],
         ];
     }
-    
+
     public function elementsTree()
     {
         return [
-          ['name'=>'GrupaMaterialu1'],  
-          ['name'=>'GrupaMaterialu3'],  
-          ['name'=>'GrupaMaterialu4'],  
-          ['name'=>'GrupaMaterialu2'],  
+            ['name' => 'GrupaMaterialu1'],
+            ['name' => 'GrupaMaterialu3'],
+            ['name' => 'GrupaMaterialu4'],
+            ['name' => 'GrupaMaterialu2'],
         ];
     }
-    
+
     public function elementsDelete()
     {
         return [
-          ['name'=>'GrupaMaterialu2'],  
-          ['name'=>'GrupaMaterialu4'],  
-          ['name'=>'GrupaMaterialu3'],  
-          ['name'=>'GrupaMaterialu1'],  
+            ['name' => 'GrupaMaterialu2'],
+            ['name' => 'GrupaMaterialu4'],
+            ['name' => 'GrupaMaterialu3'],
+            ['name' => 'GrupaMaterialu1'],
         ];
     }
-    
+
     /**
      * @dataProvider elementsDelete
      */
     public function testClear($name)
     {
-        $groupCloth = $this->entityManager->getRepository(\AppBundle\Entity\GroupCloth::class)->findOneBy(['name'=>$name]);
+        $groupCloth = $this->entityManager->getRepository(\AppBundle\Entity\GroupCloth::class)->findOneBy(['name' => $name]);
 
         $this->entityManager->remove($groupCloth);
         $this->entityManager->flush();

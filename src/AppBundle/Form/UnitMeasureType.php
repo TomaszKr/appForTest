@@ -6,7 +6,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-
 /**
  * Formularz dla jednotki miary
  *
@@ -14,6 +13,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class UnitMeasureType extends AbstractType
 {
+
+    /**
+     * 
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -21,7 +26,11 @@ class UnitMeasureType extends AbstractType
             ->add('shortName')
         ;
     }
-    
+
+    /**
+     * 
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(

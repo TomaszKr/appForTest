@@ -1,5 +1,4 @@
 <?php
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -25,6 +24,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class UnitMeasure
 {
+
     /**
      * @var int
      *
@@ -51,7 +51,6 @@ class UnitMeasure
      * @ORM\Column(name="shortName", type="string", length=255, unique=true)
      */
     private $shortName;
-
 
     /**
      * Get id
@@ -111,4 +110,3 @@ class UnitMeasure
         return $this->shortName;
     }
 }
-

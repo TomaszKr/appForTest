@@ -9,12 +9,19 @@ namespace AppBundle\Errors;
 use Symfony\Component\Form\FormInterface;
 
 /**
- * Description of ErrorForms
+ * Zarządanie błędami na formularzu
  *
  * @author tomasz
  */
 class ErrorForms
 {
+
+    /**
+     * Metoda zwraca listę błędów z formularzu
+     * 
+     * @param FormInterface $form
+     * @return array
+     */
     public function showError(FormInterface $form)
     {
         $errors = array();

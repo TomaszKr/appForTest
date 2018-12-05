@@ -1,12 +1,10 @@
 <?php
-
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
 
 /**
  * Klasa grupa materiałów
@@ -22,6 +20,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class GroupCloth
 {
+
     /**
      * @var int
      *
@@ -46,7 +45,7 @@ class GroupCloth
      * @ORM\OneToMany(targetEntity="GroupCloth", mappedBy="parent")
      */
     private $children;
-    
+
     /**
      * @var GroupCloth
      *
@@ -54,7 +53,7 @@ class GroupCloth
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
      */
     private $parent;
-    
+
     /**
      * @var GroupCloth
      *
@@ -62,12 +61,11 @@ class GroupCloth
      */
     private $cloths;
 
-    
-    public function __construct() {
+    public function __construct()
+    {
         $this->cloths = new ArrayCollection();
         $this->children = new ArrayCollection();
     }
-    
 
     /**
      * Get id
@@ -126,7 +124,7 @@ class GroupCloth
     {
         return $this->parent;
     }
-    
+
     /**
      * Set parent
      *
@@ -151,4 +149,3 @@ class GroupCloth
         return $this->children;
     }
 }
-

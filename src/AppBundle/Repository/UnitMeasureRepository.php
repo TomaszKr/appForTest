@@ -1,5 +1,4 @@
 <?php
-
 namespace AppBundle\Repository;
 
 /**
@@ -10,4 +9,5 @@ namespace AppBundle\Repository;
  */
 class UnitMeasureRepository extends \Doctrine\ORM\EntityRepository
 {
+    
 }

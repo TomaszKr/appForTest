@@ -1,5 +1,4 @@
 <?php
-
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -20,6 +19,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class Cloth
 {
+
     /**
      * @var int
      *
@@ -148,7 +148,7 @@ class Cloth
     {
         return $this->unitOfMeasure;
     }
-    
+
     /**
      * Get unitOfMeasure
      *
@@ -164,7 +164,4 @@ class Cloth
         $this->groupCloth = $groupCloth;
         return $this;
     }
-
-
 }
-
